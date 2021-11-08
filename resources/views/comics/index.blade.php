@@ -8,5 +8,8 @@
         </div>
     @endforeach
 
-
+    <br>
+    <br>
+    
+    <a href="{{route('welcome')}}">Go back to previous page</a>
 @endsection
