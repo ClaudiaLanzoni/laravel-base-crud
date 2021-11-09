@@ -17,6 +17,7 @@ class ComicController extends Controller
     {
         $comics = Comic::all();
         
+        $comics = Comic::orderBy('author')->get(); //ricordarsi di mettere get() alla fine
         return view ('comics.index', compact('comics'));
     }
 
@@ -27,6 +28,7 @@ class ComicController extends Controller
      */
     public function create()
     {
+
         return view('comics.create');
     }
 
@@ -37,6 +39,9 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    //request è un oggetto con delle proprietà
+    //che è tutto ( all() ) ciò che viene richiesto da una chiamata post (perchè siamo in store)
+    //Request è oggetto, $request è la classe
     {
         $data = $request->all();
         
@@ -70,7 +75,8 @@ class ComicController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -82,7 +88,15 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comic = Comic::findOrFail($id); //è lo stesso id che esiste in store!!!
+        //in alternativa si poteva mettere come parametro Comic $comic con depemdemcy injection
+        
+        $data = $request->all();
+
+        $comic->update($data); //non c'è bisogno di fare un nuovo oggetto $comic = Comic::create($data);
+        // come in store perchè non ne crea uno nuovo, basta update() al posto di save()
+
+        return redirect()->route('comics.index'); //di solito ('comics.show', $comic->id)
     }
 
     /**

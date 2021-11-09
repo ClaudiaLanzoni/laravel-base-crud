@@ -5,6 +5,7 @@
     @foreach ($comics as $comic)
         <div>
             <a href="{{route('comics.show', $comic->id)}}">{{$comic->title}}</a>
+            <button> <a href="{{route('comics.edit', $comic->id)}}">Edit</a> </button>
         </div>
     @endforeach
 
