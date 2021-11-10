@@ -1,3 +1,10 @@
-.enter_link {
-    transform: translate(-50%, -50%);
+@import "partials/create";
+@import "partials/edit";
+@import "partials/index";
+@import "partials/show";
+@import "partials/welcome";
+@import "~bootstrap/scss/bootstrap";
+
+a {
+    text-decoration: none;
 }

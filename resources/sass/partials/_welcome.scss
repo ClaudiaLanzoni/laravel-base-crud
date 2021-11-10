@@ -1,0 +1,20 @@
+.start_page {
+    background-image: url('https://images.gludy.com/photos/0/superheroes-comics-wallpaper.jpg');
+    background-size: contain;
+    background-position: center;
+    object-fit: cover;
+    width: 250vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+        a {
+            text-transform: uppercase;
+            display: inline-block;
+            font-family: Impact;
+            color: rgb(128, 190, 3);
+            font-size: 2rem;
+        }
+
+};
